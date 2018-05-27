@@ -44,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
         }
         StringBuffer stringBuffer = new StringBuffer();
         while(res.moveToNext()) {
-
+            stringBuffer.append("Contact ID: " + res.getString(0) + "\n");
+            stringBuffer.append("Name: " + res.getString(1) + "\n");
+            stringBuffer.append("Phone: " + res.getString(2) + "\n");
+            stringBuffer.append("Address: " + res.getString(3) + "\n");
             //append res column 0,1,2,3 to string buffer
 
         }

@@ -30,6 +30,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("ContactApp","DatabaseHelper: creating database");
         db.execSQL(SQL_CREATE_ENTRIES);
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        onUpgrade(db,db.getVersion(),db.getVersion());
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d("ContactApp","DatabaseHelper: upgrading database");
@@ -53,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllData() {
         Log.d("ContactApp","DatabaseHelper: calling getAllData method");
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         return cursor;
     }
 }
